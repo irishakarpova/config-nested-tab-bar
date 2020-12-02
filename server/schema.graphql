@@ -1,0 +1,15 @@
+schema {
+  query: Query
+}
+
+type Query {
+  getMenu: [MenuItem]
+}
+
+type MenuItem {
+    id: ID!
+    label: String!
+    parentId: ID
+}
+
+

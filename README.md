@@ -26,7 +26,8 @@ type MenuItem {
 }
 ```
 
-When I get data with useQuery hook, I render uplevel set first. For support multi level tab bar i found usefull to use React.createContext API.
+When I get data with useQuery hook, I render uplevel set first. 
+For support multi level tab bar i found usefull to use React.createContext API.
 
 ```
 <AppBarStore.Consumer>

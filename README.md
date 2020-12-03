@@ -53,7 +53,6 @@ Now I display set of tabs belongs to current parentId.
     ? store.subvalue 
     : false}
   onChange={store.handleChangeSubValueUpd} 
-  textColor="primary"
   variant="scrollable"
   aria-label="affiliates tabs">
     {menuItems.map( menuItem => {
@@ -68,20 +67,33 @@ Now I display set of tabs belongs to current parentId.
             label={
                 htmlToReactParser.parse(menuItem.label.length > 11 ? 
                   menuItem.label.replace(' ', '<br/>') : menuItem.label)}
-            color="primary"
-            wrapped
-            disableRipple
-            className={classes.tabs} 
-            classes={{root: classes.tabRoot}}>
+            ...
+         >
           </Tab> 
         : null
       )})}
 </Tabs>
 ```        
  
+For support multi level tab bar i found useful to use React.createContext API that provides access to current context value above the tree for consumers components and accepts values from The Provider component.
+
+```
+export const AppBarStore = React.createContext({
+    value: null,
+    hoverId: null,
+    subvalue: null,
+    activeValue: "1",
+    changed: false,
+    parentId: null,
+    state: {top: false},
+    subvalueChanged: null,
+    handleChangeSubValue: () => {},
+    handleValueChange: () => {},
+    toggleDrawer: () => {},
+    handleChangeSubValueUpd: () => {}
+});
+```
  
- 
- For support multi level tab bar i found useful to use React.createContext API that provides access to current context value above the tree. 
     
     
     

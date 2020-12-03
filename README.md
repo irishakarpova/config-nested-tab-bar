@@ -6,7 +6,7 @@
 - Apollo GraphQL
 - Material UI
 
-### Step1. 
+### Step 1 
 
 According to the GraphQL configuration the 'parentId' type defines set of tabs that belong to a up level tab bar.
 

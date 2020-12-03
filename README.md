@@ -53,7 +53,7 @@ Now I display set of tabs belongs to current parentId.
     : false}
   onChange={store.handleChangeSubValueUpd} 
   variant="scrollable"
-  aria-label="affiliates tabs">
+  ... >
     {menuItems.map( menuItem => {
       let url;
       return(

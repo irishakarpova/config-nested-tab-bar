@@ -8,7 +8,7 @@
 - html-to-react
 
 
-According to the GraphQL configuration the 'parentId' type defines set of tabs that belong to a up level tab bar.
+According to the GraphQL configuration, the 'parentId' type defines a set of tabs that belong to an up level tab bar.
 
 ```
 schema {
@@ -26,7 +26,7 @@ type MenuItem {
 }
 ```
 
-When I get data with useQuery hook, I render uplevel set first. 
+When I get data with the useQuery hook, I render the uplevel set first. 
 
 ```
 {menuItems.map(menuItem => {
@@ -44,7 +44,7 @@ When I get data with useQuery hook, I render uplevel set first.
 })}
  ```
 
-Now I display set of tabs belongs to current parentId.
+Now I display a set of tabs belongs to the current parentId.
 Some of the tabs labels might be complex and use the second row. In this way, I need dynamic control for displaying correctly. I am using The Html-to-react module to get JSX and implement some logic.
 
 ```
@@ -76,7 +76,7 @@ Some of the tabs labels might be complex and use the second row. In this way, I 
 </Tabs>
 ```        
  
-For support multi level tab bar i found useful to use React.createContext API that provides access to current context value above the tree for consumers components and accepts values from The Provider component.
+To support the multi-level tab bar I found it useful to use React.createContext API that provides access to current context value above the tree for consumers components and accepts values from The Provider component.
 
 ```
 export const AppBarStore = React.createContext({
@@ -95,9 +95,4 @@ export const AppBarStore = React.createContext({
 });
 ```
  
-    
-    
-    
-
-
-
+   

@@ -45,6 +45,7 @@ When I get data with useQuery hook, I render uplevel set first.
  ```
 
 Now I display set of tabs belongs to current parentId.
+Some of the tabs labels might be complex and use the second row. In this way, I need dynamic control for displaying correctly. I am using The Html-to-react module to get JSX and implement some logic.
 
 ```
 <Tabs 

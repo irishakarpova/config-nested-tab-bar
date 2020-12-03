@@ -43,6 +43,45 @@ When I get data with useQuery hook, I render uplevel set first.
     </Button>
 })}
  ```
+
+Now I display set of tabs belongs to current parentId.
+
+```
+<Tabs 
+  value={store.subvalueChanged || (!store.subvalueChanged && !store.changed)
+    || store.activeValue === store.value
+    ? store.subvalue 
+    : false}
+  onChange={store.handleChangeSubValueUpd} 
+  textColor="primary"
+  variant="scrollable"
+  aria-label="affiliates tabs">
+    {menuItems.map( menuItem => {
+      let url;
+      return(
+        store.hoverId === menuItem.parentId && (url = getUrl(menuItem)) ? 
+          <Tab 
+            component={RouterLink}
+            key={menuItem.id}
+            value={url}   
+            to={url}   
+            label={
+                htmlToReactParser.parse(menuItem.label.length > 11 ? 
+                  menuItem.label.replace(' ', '<br/>') : menuItem.label)}
+            color="primary"
+            wrapped
+            disableRipple
+            className={classes.tabs} 
+            classes={{root: classes.tabRoot}}>
+          </Tab> 
+        : null
+      )})}
+</Tabs>
+```        
+ 
+ 
+ 
+ For support multi level tab bar i found useful to use React.createContext API that provides access to current context value above the tree. 
     
     
     

@@ -11,7 +11,6 @@
 According to the GraphQL configuration the 'parentId' type defines set of tabs that belong to a up level tab bar.
 
 ```
-
 schema {
   query: Query
 }
@@ -25,7 +24,6 @@ type MenuItem {
     label: String!
     parentId: ID!
 }
-
 ```
 
 When I get data with useQuery hook, I render uplevel set first. For support multi level tab bar i found usefull to use React.createContext API.

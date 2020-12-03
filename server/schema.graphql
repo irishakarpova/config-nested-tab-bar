@@ -9,7 +9,7 @@ type Query {
 type MenuItem {
     id: ID!
     label: String!
-    parentId: ID
+    parentId: ID!
 }
 
 

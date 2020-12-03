@@ -4,7 +4,7 @@ import {AppBarStore} from '../../../store/appBarStore';
 import {useStyles} from './styles'
 
 
-export default function SwipeableTemporaryDrawer({menuItems}){
+export default function ({menuItems}){
   const classes = useStyles();
 
   return (

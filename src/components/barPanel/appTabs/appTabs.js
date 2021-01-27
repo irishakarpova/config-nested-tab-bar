@@ -42,10 +42,14 @@ export default function({menuItems}){
         onClick={store.toggleDrawer('top', false)}
       >
         <Tabs 
-          value={store.subvalueChanged || (!store.subvalueChanged && !store.changed)
-            || store.activeValue === store.value
+          value={
+            store.subvalue !== '/' && 
+            (store.subvalueChanged
+            || (!store.subvalueChanged && !store.changed)
+            ||  store.activeValue === store.value)
             ? store.subvalue 
-            : false}
+            : 
+            false}
           onChange={store.handleChangeSubValueUpd} 
           textColor="primary"
           variant="scrollable"

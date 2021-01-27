@@ -21,6 +21,8 @@ export default function Appbar(){
     const { loading, error, data } = useQuery(GET_MENU);
     if (error) return `Error! ${error.message}`;
 
+    console.log("data", data)
+
     const menuItems =  data ? data.getMenu : [] 
 
     return(

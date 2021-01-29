@@ -30,10 +30,7 @@ export type GetMenuQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetMenuQuery = (
   { __typename?: 'Query' }
-  & { getMenu?: Maybe<Array<Maybe<(
-    { __typename?: 'MenuItem' }
-    & Pick<MenuItem, 'id' | 'label' | 'parentId'>
-  )>>> }
+  & { getMenu?: Maybe<Array<Maybe<MenuItem>>> }
 );
 
 

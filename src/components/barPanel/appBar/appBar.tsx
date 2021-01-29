@@ -25,7 +25,7 @@ export default function Appbar(){
     const menuItems =  data ? data.getMenu : [] 
 
     return(
-        <AppBarStore.Provider value ={UseCompParams(menuItems)}>
+        <AppBarStore.Provider value = { UseCompParams(menuItems) }>
             <div className={classes.root}>
                 {loading ? <MenuSceleton/> :
                 <Router>

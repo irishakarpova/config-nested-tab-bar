@@ -1,26 +1,25 @@
 import React from 'react'
 import {AppBarStore} from '../../../store/appBarStore';
-import {Store} from '../../../store/appBarStore';
+import {Store, Anchor, SimpleString} from '../../../store/appBarStore';
 import { MenuItem, Maybe } from '../../../generated/graphql';
 
-
-type Anchor = 'top' | 'left' | 'bottom' | 'right'; 
+type UseState = string | null | undefined
 
 export function UseCompParams(menuItems:
-    Maybe<Pick<MenuItem, "label" | "id" | "parentId">>[] | null | undefined): Store {
+    Maybe<MenuItem>[] | null | undefined ): Store {
 
     const store = React.useContext(AppBarStore);
 
-    const [value, setValue] = React.useState< string | null | undefined >();
-    const [activeValue, setActiveValue] = React.useState< string | null | undefined >('1');
+    const [value, setValue] = React.useState< UseState >();
+    const [activeValue, setActiveValue] = React.useState< UseState >('1');
     const [changed, setChanged] = React.useState(false);
-    const [hoverId, setHoverId] = React.useState< string | null >();
-    const [parentId, setParentId] = React.useState< string | null >();
+    const [hoverId, setHoverId] = React.useState< UseState>();
+    const [parentId, setParentId] = React.useState< UseState >();
     const [state, setState] = React.useState({
         top: false,
     });
-
-    const toggleDrawer = (anchor: Anchor, open: boolean, menuId?: string | null, parentId?: string | null | undefined) => (event: React.MouseEvent) => {
+    
+    const toggleDrawer = (anchor: Anchor, open: boolean, menuId: SimpleString, parentId: SimpleString) => (event: React.MouseEvent) => {
         setState({ ...state, [anchor]: open });
         setHoverId(menuId);
         setParentId(parentId)

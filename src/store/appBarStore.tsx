@@ -1,6 +1,10 @@
 import React from 'react'
+import { MenuItem, Maybe } from '../generated/graphql'
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right'; 
+export type Anchor = 'top' | 'left' | 'bottom' | 'right'; 
+export type SimpleString = string | null | undefined
+export type MainMenuType = Pick<Store, "menuItems">
+
 
 export interface Store{
     value: string | null | undefined
@@ -13,10 +17,12 @@ export interface Store{
     subvalueChanged: boolean
     handleChangeSubValue: (event: React.MouseEvent, newValue:string | undefined) => void,
     handleValueChange: (event:  React.MouseEvent) => void,
-    toggleDrawer: (anchor: Anchor, open: boolean, menuId?: string | null | undefined, parentId?: string) => (event: React.MouseEvent) => void,
+    toggleDrawer: (anchor: Anchor, open: boolean, menuId?: SimpleString, parentId?: SimpleString) => (event: React.MouseEvent) => void,
     handleChangeSubValueUpd: () => void
+    menuItems:  Maybe<MenuItem>[] | null | undefined
 }
 const defaultValue: Store = {
+    menuItems: [],
     value: null,
     hoverId: null,
     subvalue: null,

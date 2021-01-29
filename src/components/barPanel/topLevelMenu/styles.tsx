@@ -1,6 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme: Theme) => 
+createStyles ({ 
     root:{
         background: '#33404d',
         width: '100%',

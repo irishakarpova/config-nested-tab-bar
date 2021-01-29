@@ -1,40 +1,46 @@
 import React from 'react'
 import {AppBarStore} from '../../../store/appBarStore';
+import {Store} from '../../../store/appBarStore';
+import { MenuItem, Maybe } from '../../../generated/graphql';
 
-export function UseCompParams(menuItems) {
+
+type Anchor = 'top' | 'left' | 'bottom' | 'right'; 
+
+export function UseCompParams(menuItems:
+    Maybe<Pick<MenuItem, "label" | "id" | "parentId">>[] | null | undefined): Store {
 
     const store = React.useContext(AppBarStore);
 
-    const [value, setValue] = React.useState();
-    const [activeValue, setActiveValue] = React.useState('1');
+    const [value, setValue] = React.useState< string | null | undefined >();
+    const [activeValue, setActiveValue] = React.useState< string | null | undefined >('1');
     const [changed, setChanged] = React.useState(false);
-    const [hoverId, setHoverId] = React.useState(null);
-    const [parentId, setParentId] = React.useState(null);
+    const [hoverId, setHoverId] = React.useState< string | null >();
+    const [parentId, setParentId] = React.useState< string | null >();
     const [state, setState] = React.useState({
         top: false,
-      });
+    });
 
-    const toggleDrawer = (anchor, open, menuId, parentId) => (event) => {
+    const toggleDrawer = (anchor: Anchor, open: boolean, menuId?: string | null, parentId?: string | null | undefined) => (event: React.MouseEvent) => {
         setState({ ...state, [anchor]: open });
         setHoverId(menuId);
         setParentId(parentId)
         setValue(menuId);
         setChanged(true);
-        store.handleValueChange();
+        store.handleValueChange(event);
     };
 
-    const handleChangeSubValue = (event, newValue) => {
+    const handleChangeSubValue = (event: React.MouseEvent<Element, MouseEvent>, newValue: string | undefined) => {
         setActiveValue(value);
         store.handleChangeSubValue(event, newValue);
     };
 
     let currentIndex;
     let parentCount = 0;
-    if (!changed) {
+    if (!changed && menuItems) {
         for (let item of menuItems) {
-            if (item.parentId === '0') {
+            if (item && store && item.parentId === '0') {
                 parentCount++;
-                if (store.subvalue.indexOf(
+                if (store.subvalue && store.subvalue.indexOf(
                     item.label.toLowerCase().split(' ').join('-')
                     ) === 1) {
                     currentIndex = parentCount;
@@ -43,10 +49,9 @@ export function UseCompParams(menuItems) {
             }
         };
 
-        if (currentIndex && value != currentIndex) {
+        if (currentIndex && Number(value) != currentIndex) {
             setValue(currentIndex.toString());
             setActiveValue(currentIndex.toString());
-            return;
         }
     }
 

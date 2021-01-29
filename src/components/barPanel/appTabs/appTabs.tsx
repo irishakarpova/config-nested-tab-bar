@@ -3,28 +3,26 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import {Link as RouterLink } from 'react-router-dom';
-import {Parser} from 'html-to-react';
+import parse from 'html-react-parser'
 import useWindowDimensions from '../../../utility/getWindowSize'
 import useScrollPosition from '../../../utility/getScrollPosition'
 import GetTime from '../../../utility/getTime'
 import {AppBarStore} from '../../../store/appBarStore';
 import {useStyles} from './styles'
+import { MenuItem, Maybe } from '../../../generated/graphql';
 
-const htmlToReactParser = new Parser();  
+ 
 
-export default function({menuItems}){
+export default function(props: {
+  menuItems:
+      Maybe<{ __typename?: "MenuItem" | undefined; } & Pick<MenuItem, "label" | "id" | "parentId">>[] | null | undefined
+}){
 
   const store = React.useContext(AppBarStore);
   const classes = useStyles(); 
   const {width} = useWindowDimensions();
   const position= useScrollPosition();
 
-  const getUrl = (menuItem) => {
-    return `/${store.parentId.replace(' ', '-')
-    .toLowerCase()}/${menuItem.label
-    .replace(/\s+/g, '-')
-    .toLowerCase()}`
-  }
 
   return(
     <SwipeableDrawer
@@ -54,18 +52,23 @@ export default function({menuItems}){
           textColor="primary"
           variant="scrollable"
           aria-label="affiliates tabs">
-            {menuItems.map( menuItem => {
-              let url;
+            {props.menuItems && props.menuItems.map( menuItem => {
+              let url: string | null |undefined;
               return(
-                store.hoverId === menuItem.parentId && (url = getUrl(menuItem)) ? 
+                menuItem && store.hoverId === menuItem.parentId && ( 
+                  url = store.parentId &&  `/${store.parentId.replace(' ', '-')
+                  .toLowerCase()}/${menuItem.label
+                  .replace(/\s+/g, '-')
+                  .toLowerCase()}`)
+                 ? 
                   <Tab 
                     component={RouterLink}
                     key={menuItem.id}
                     value={url}   
                     to={url}   
                     label={
-                        htmlToReactParser.parse(menuItem.label.length > 11 ? 
-                          menuItem.label.replace(' ', '<br/>') : menuItem.label)}
+                        (parse(menuItem.label.length > 11 ? 
+                          menuItem.label.replace(' ', '<br/>') : menuItem.label))}
                     color="primary"
                     wrapped
                     disableRipple

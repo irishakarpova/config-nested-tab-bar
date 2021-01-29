@@ -5,6 +5,7 @@ import { AppBarStore } from './store/appBarStore';
 import { GetParams } from './utility/useAppParams'
 
 function App() {
+
   return (
     <AppBarStore.Provider value={GetParams()}>
       <CssBaseline />

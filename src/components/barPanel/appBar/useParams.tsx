@@ -4,6 +4,7 @@ import {Store, Anchor, SimpleString} from '../../../store/appBarStore';
 import { MenuItem, Maybe } from '../../../generated/graphql';
 
 type UseState = string | null | undefined
+let currentIndex: number;
 
 export function UseCompParams(menuItems:
     Maybe<MenuItem>[] | null | undefined ): Store {
@@ -35,7 +36,7 @@ export function UseCompParams(menuItems:
         }
     };
 
-    let currentIndex;
+
     let parentCount = 0;
     if (!changed && menuItems) {
         for (let item of menuItems) {
@@ -50,7 +51,7 @@ export function UseCompParams(menuItems:
             }
         };
 
-        if (currentIndex && Number(value) != currentIndex) {
+        if (currentIndex && Number(value) !== currentIndex) {
             setValue(currentIndex.toString());
             setActiveValue(currentIndex.toString());
         }

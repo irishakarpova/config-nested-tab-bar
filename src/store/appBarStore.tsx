@@ -1,11 +1,8 @@
 import React from 'react'
 import { MenuItem, Maybe } from '../generated/graphql'
-import { MouseEvent } from 'react';
-
 export type Anchor = 'top' | 'left' | 'bottom' | 'right'; 
 export type SimpleString = string | null | undefined
 export type MainMenuType = Pick<Store, "menuItems">
-
 
 export interface Store{
     value: string | null | undefined

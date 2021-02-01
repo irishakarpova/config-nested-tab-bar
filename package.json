@@ -26,10 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "run codegen": "graphql-codegen --config codegen.yml",
-    "codegen?": "graphql-codegen --config codegen.yml",
-    "go": "graphql-codegen --config codegen.yml",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "compile": "NODE_ENV=production babel src --out-dir lib --copy-files --extensions '.tsx,.js'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,6 +45,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
     "@graphql-codegen/cli": "1.20.1",
     "@graphql-codegen/introspection": "1.18.1",
     "@graphql-codegen/typescript": "1.20.2",

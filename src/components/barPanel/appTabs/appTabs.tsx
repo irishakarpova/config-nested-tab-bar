@@ -10,7 +10,6 @@ import GetTime from '../../../utility/getTime'
 import {AppBarStore, MainMenuType} from '../../../store/appBarStore';
 import {useStyles} from './styles'
 
-
 const AppTabs: React.FC<MainMenuType> = ({menuItems}) => {
 
   const store = React.useContext(AppBarStore);

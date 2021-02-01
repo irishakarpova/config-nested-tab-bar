@@ -28,9 +28,11 @@ export function UseCompParams(menuItems:
         store.handleValueChange(event);
     };
 
-    const handleChangeSubValue = (event: React.MouseEvent<Element, MouseEvent>, newValue: string | undefined) => {
+    const handleChangeSubValue = ( event: React.ChangeEvent<{}>, newValue: string | undefined) => {
         setActiveValue(value);
-        store.handleChangeSubValue(event, newValue);
+        if (store.handleChangeSubValue) {
+            store.handleChangeSubValue( event, newValue);
+        }
     };
 
     let currentIndex;

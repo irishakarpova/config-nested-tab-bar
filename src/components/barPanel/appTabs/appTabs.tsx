@@ -42,7 +42,7 @@ const AppTabs: React.FC<MainMenuType> = ({menuItems}) => {
             ? store.subvalue 
             : 
             false }
-          onChange={store.handleChangeSubValueUpd} 
+          onChange={store.handleChangeSubValue} 
           textColor="primary"
           variant="scrollable"
           aria-label="affiliates tabs">

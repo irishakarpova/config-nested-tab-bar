@@ -15,7 +15,7 @@ export interface Store{
     parentId: string | null | undefined
     state: { top: boolean }
     subvalueChanged: boolean
-    handleChangeSubValue: (event: React.MouseEvent, newValue:string | undefined) => void,
+    handleChangeSubValue: ((event: React.ChangeEvent<{}>, value: any) => void) | undefined,
     handleValueChange: (event:  React.MouseEvent) => void,
     toggleDrawer: (anchor: Anchor, open: boolean, menuId?: SimpleString, parentId?: SimpleString) => (event: React.MouseEvent) => void,
     handleChangeSubValueUpd: () => void

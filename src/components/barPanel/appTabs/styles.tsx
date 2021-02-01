@@ -1,13 +1,12 @@
 
-import { makeStyles } from '@material-ui/core/styles';
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles(( theme : Theme) =>  
+
+createStyles({
     tabs:{
       minHeight: 66,
-      color: theme.palette.primary,
-      [theme.breakpoints.up('sm')]: {
-          minHeight: 66,
-      },
+      color: theme.palette.primary.main,
     },
     tabRoot:{
         padding: 8,

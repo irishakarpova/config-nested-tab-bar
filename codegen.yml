@@ -1,0 +1,8 @@
+overwrite: true
+http://localhost:8008/graphql
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"

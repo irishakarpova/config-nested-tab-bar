@@ -13,8 +13,9 @@ export default function useScrollPosition() {
       setSrollPosition(getScrollPosition());
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
+    
     return () => {
-        window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   })
 

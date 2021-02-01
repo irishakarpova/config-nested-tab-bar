@@ -13,20 +13,19 @@ import AppTabs from '../appTabs/appTabs';
 import {AppBarStore} from '../../../store/appBarStore';
 import {GET_MENU} from './query';
 import {UseCompParams} from './useParams';
+import {GetMenuQuery} from '../../../generated/graphql'
 
 export default function Appbar(){
   
     const classes = useStyles();
 
-    const { loading, error, data } = useQuery(GET_MENU);
+    const { loading, error, data } = useQuery< GetMenuQuery >(GET_MENU);
     if (error) return `Error! ${error.message}`;
-
-    console.log("data", data)
-
+    
     const menuItems =  data ? data.getMenu : [] 
 
     return(
-        <AppBarStore.Provider value={UseCompParams(menuItems)}>
+        <AppBarStore.Provider value = { UseCompParams(menuItems) }>
             <div className={classes.root}>
                 {loading ? <MenuSceleton/> :
                 <Router>

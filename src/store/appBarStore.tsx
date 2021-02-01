@@ -1,5 +1,6 @@
 import React from 'react'
 import { MenuItem, Maybe } from '../generated/graphql'
+import { MouseEvent } from 'react';
 
 export type Anchor = 'top' | 'left' | 'bottom' | 'right'; 
 export type SimpleString = string | null | undefined
@@ -16,8 +17,8 @@ export interface Store{
     state: { top: boolean }
     subvalueChanged: boolean
     handleChangeSubValue: ((event: React.ChangeEvent<{}>, value: any) => void) | undefined,
-    handleValueChange: (event:  React.MouseEvent) => void,
-    toggleDrawer: (anchor: Anchor, open: boolean, menuId?: SimpleString, parentId?: SimpleString) => (event: React.MouseEvent) => void,
+    handleValueChange: () => void,
+    toggleDrawer: (anchor: Anchor, open: boolean, menuId?: SimpleString, parentId?: SimpleString) => (event: React.SyntheticEvent<{}, Event>) => void,
     handleChangeSubValueUpd: () => void
     menuItems:  Maybe<MenuItem>[] | null | undefined
 }
@@ -32,7 +33,7 @@ const defaultValue: Store = {
     state: {top: false},
     subvalueChanged: false,
     handleChangeSubValue: (event, newValue) => {},
-    handleValueChange: (event) => {},
+    handleValueChange: () => {},
     toggleDrawer: (anchor, open, menuId, parentId) => (event) => {},
     handleChangeSubValueUpd: () => {}
 }

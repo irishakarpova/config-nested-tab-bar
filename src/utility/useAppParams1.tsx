@@ -8,7 +8,7 @@ export function GetParams() {
     const [subvalue, setSubValue] = React.useState(history.location.pathname);
     const [subvalueChanged, setSubValueChanged] = React.useState(false);
   
-    const handleChangeSubValue = (event, newSubValue) => {
+    const handleChangeSubValue = (newSubValue: string) => {
         setSubValueChanged(true);
         setSubValue(newSubValue);
     };

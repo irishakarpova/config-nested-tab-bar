@@ -19,13 +19,13 @@ export function UseCompParams(menuItems:
         top: false,
     });
     
-    const toggleDrawer = (anchor: Anchor, open: boolean, menuId: SimpleString, parentId: SimpleString) => (event: React.MouseEvent) => {
+    const toggleDrawer = (anchor: Anchor, open: boolean, menuId: SimpleString, parentId: SimpleString) => (event: React.SyntheticEvent<{}, Event>) => {
         setState({ ...state, [anchor]: open });
         setHoverId(menuId);
         setParentId(parentId)
         setValue(menuId);
         setChanged(true);
-        store.handleValueChange(event);
+        store.handleValueChange();
     };
 
     const handleChangeSubValue = ( event: React.ChangeEvent<{}>, newValue: string | undefined) => {

@@ -9,7 +9,7 @@ import theme from './theme'
 function App() {
 
   return (
-    <ThemeProvider  theme={theme}>
+    <ThemeProvider theme={theme}>
       <AppBarStore.Provider value={GetParams()}>
         <CssBaseline />
         <AppBar />

@@ -5,7 +5,7 @@ export function GetParams() {
 
     let history = useHistory();
   
-    const [subvalue, setSubValue] = React.useState(history.location.pathname);
+    const [subvalue, setSubValue] = React.useState<string>();
     const [subvalueChanged, setSubValueChanged] = React.useState(false);
   
     const handleChangeSubValue = (event: React.MouseEvent, newSubValue: string) => {
@@ -16,10 +16,6 @@ export function GetParams() {
     const handleValueChange = () => {
       setSubValueChanged(false);
     }
-  
-    history.listen(location => {
-      setSubValue(location.pathname)
-    });
   
     return {
       subvalue, 

@@ -1,13 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { ThemeProvider } from '@material-ui/core/styles';
-import theme from './theme'
-import {serverUrl} from './config'
-import App from './App';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { ApolloProvider } from '@apollo/client';
-import { BrowserRouter as Router, Route} from "react-router-dom"
-
+import React from "react";
+import ReactDOM from "react-dom";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "./theme";
+import { serverUrl } from "./config";
+import App from "./App";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const client = new ApolloClient({
   uri: serverUrl,
@@ -15,14 +14,18 @@ const client = new ApolloClient({
   resolvers: {}
 });
 
-
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <ThemeProvider  theme={theme}>
+    <ThemeProvider theme={theme}>
       <Router>
-        <Route path="/" render={()=>{return <App/>}}/>
+        <Route
+          path="/"
+          render={() => {
+            return <App />;
+          }}
+        />
       </Router>
     </ThemeProvider>
   </ApolloProvider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

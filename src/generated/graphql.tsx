@@ -1,9 +1,13 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import { gql } from "@apollo/client";
+import * as Apollo from "@apollo/client";
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -14,35 +18,32 @@ export type Scalars = {
 };
 
 export type Query = {
-  __typename?: 'Query';
+  __typename?: "Query";
   getMenu?: Maybe<Array<Maybe<MenuItem>>>;
 };
 
 export type MenuItem = {
-  __typename?: 'MenuItem';
-  id: Scalars['ID'];
-  label: Scalars['String'];
-  parentId: Scalars['ID'];
+  __typename?: "MenuItem";
+  id: Scalars["ID"];
+  label: Scalars["String"];
+  parentId: Scalars["ID"];
 };
 
-export type GetMenuQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetMenuQueryVariables = Exact<{ [key: string]: never }>;
 
-
-export type GetMenuQuery = (
-  { __typename?: 'Query' }
-  & { getMenu?: Maybe<Array<Maybe<MenuItem>>> }
-);
-
+export type GetMenuQuery = { __typename?: "Query" } & {
+  getMenu?: Maybe<Array<Maybe<MenuItem>>>;
+};
 
 export const GetMenuDocument = gql`
-    query GetMenu {
-  getMenu {
-    id
-    label
-    parentId
+  query GetMenu {
+    getMenu {
+      id
+      label
+      parentId
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetMenuQuery__
@@ -59,12 +60,25 @@ export const GetMenuDocument = gql`
  *   },
  * });
  */
-export function useGetMenuQuery(baseOptions?: Apollo.QueryHookOptions<GetMenuQuery, GetMenuQueryVariables>) {
-        return Apollo.useQuery<GetMenuQuery, GetMenuQueryVariables>(GetMenuDocument, baseOptions);
-      }
-export function useGetMenuLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMenuQuery, GetMenuQueryVariables>) {
-          return Apollo.useLazyQuery<GetMenuQuery, GetMenuQueryVariables>(GetMenuDocument, baseOptions);
-        }
+export function useGetMenuQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetMenuQuery, GetMenuQueryVariables>
+) {
+  return Apollo.useQuery<GetMenuQuery, GetMenuQueryVariables>(
+    GetMenuDocument,
+    baseOptions
+  );
+}
+export function useGetMenuLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetMenuQuery, GetMenuQueryVariables>
+) {
+  return Apollo.useLazyQuery<GetMenuQuery, GetMenuQueryVariables>(
+    GetMenuDocument,
+    baseOptions
+  );
+}
 export type GetMenuQueryHookResult = ReturnType<typeof useGetMenuQuery>;
 export type GetMenuLazyQueryHookResult = ReturnType<typeof useGetMenuLazyQuery>;
-export type GetMenuQueryResult = Apollo.QueryResult<GetMenuQuery, GetMenuQueryVariables>;
+export type GetMenuQueryResult = Apollo.QueryResult<
+  GetMenuQuery,
+  GetMenuQueryVariables
+>;

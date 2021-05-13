@@ -18,10 +18,8 @@ export default function(){
     const classes = useStyles();
 
     return(
-        <Link href="/">
-            <Box  mr={2} pl={1.5}>
-                <img src={logo} className={classes.root} alt="LOGO"/>
-            </Box>
-        </Link>
+        <Box  mr={2} pl={1.5}>
+            <img src={logo} className={classes.root} alt="LOGO"/>
+        </Box>
     )
 }
